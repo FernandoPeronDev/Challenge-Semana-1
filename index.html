@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador De Texto Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="contenedor">
+    
+        <header class="logo">
+            <img src="img/logo.png" alt="logo">
+        </header>
+
+        <main class="grid">
+            
+            <div class="box">
+             
+                <div class="parrafo">
+                    
+                    <p class="parrafo-texto">Ingrese el texto a encriptar / desencriptar (Solo minusculas y sin acentos)</p>
+                
+                </div>
+
+                <div class="areaTexto">
+                    
+                    <input type="text" class="campoTexto1" id="area1" placeholder="Ingrese texto aquí..." autofocus checked>
+                
+                </div>
+
+                <div class="botones">
+
+                    <button class="btn" onclick="return btnEncriptar()">Encriptar</button>
+                
+                    <button class="btn" onclick="return btnDesencriptar()">Desencriptar</button>
+
+                </div>
+
+            </div>
+
+            <div class="box">
+
+                <p class="parrafo-texto">Resultado</p>
+
+                <div class="areaTexto">
+                    
+                    <input class="campoTexto2" id="area2" placeholder="Resultado...">
+                
+                </div>
+
+                <div class="botones">
+
+                    <button onclick="return btnPegar()" class=" btn btnCopiar">Copiar / Pegar</button>
+                
+
+                </div>
+
+            </div>
+        
+        </main>
+
+    </div>
+
+
+    <footer class="footer">
+
+        <div class="footer-parrafo">
+            
+            <p class="footer-texto">Challenge Oracle ONE. -Fernando Peron- </p>
+        
+        </div>
+
+        <div class="footer-img">
+
+            
+            
+            <a class="linkedin" href="https://www.linkedin.com/in/fernando-alberto-0060721b3/" target="_blank">
+                    
+                <img class="img-footer" src="img/Linkedin-símbolo.png" alt="Linkedin">
+                    
+                <p>Linkedin</p> 
+                
+            </a>
+
+            
+            
+            
+            
+            <a class="git" href="https://github.com/FernandoPeronDev" target="_blank">
+                <img class="img-footer img-git" src="img/GitHub-Emblem.png" alt="GitHub">GitHub
+            </a>
+            
+
+        </div>
+
+    </footer>
+
+<script>
+        
+    function btnEncriptar(){
+        let desencriptado = document.getElementById("area1").value;
+        let encriptado = desencriptado.replace(/e/gi, "enter").replace(/i/gi, "imes").replace(/a/gi, "ai").replace(/o/gi, "ober").replace(/u/gi, "ufat").replace(/[áàäâ]/g,'a').replace(/[éèëê]/g,'e').replace(/[íìïî]/g,'i').replace(/[óòöô]/g,'o').replace(/[úùüû]/g,'u');
+        document.getElementById("area2").value = encriptado;
+    }
+    
+    function btnDesencriptar(){
+        let encriptado = document.getElementById("area1").value;
+        let desencriptado = encriptado.replace(/enter/gi, "e").replace(/imes/gi, "i").replace(/ai/gi, "a").replace(/ober/gi, "o").replace(/ufat/gi, "u").replace(/[áàäâ]/g,'a').replace(/[éèëê]/g,'e').replace(/[íìïî]/g,'i').replace(/[óòöô]/g,'o').replace(/[úùüû]/g,'u');
+        document.getElementById("area2").value = desencriptado;
+    }
+
+    function btnPegar(){
+        let texto = document.getElementById("area2");
+        texto.select();
+        texto.setSelectionRange(0, 99999);
+        document.execCommand('copy');
+        document.getElementById("area1").value = texto.value;
+    }
+
+    function foco(area1){
+        document.getElementById("area1").focus();
+    }
+
+</script>
+
+</body>
+
+</html>
